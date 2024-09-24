@@ -25,8 +25,9 @@ const fetchPokemons = () => {
     .then((response) => {
       return response.json()
     })
-      .then((data) => {
-        console.log(data.results[0].name) 
+    .then((data) => {
+      data.results.forEach((pokemon) => console.log(pokemon.name))
+      //console.log(data.results.name) array1.forEach((element) => console.log(element))
     })
 }
 fetchPokemons()

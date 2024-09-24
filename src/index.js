@@ -8,11 +8,12 @@
 // HTML to contain info about one specific pokemon. To get you
 // started, we've created some variables for you to use later on:
 
-const image = document.getElementById("image");
-const name = document.getElementById("name");
-const weight = document.getElementById("weight");
-const height = document.getElementById("height");
-const types = document.getElementById("types");
+const image = document.getElementById("image")
+const name = document.getElementById("name")
+const weight = document.getElementById("weight")
+const height = document.getElementById("height")
+const types = document.getElementById("types")
+const ability = document.getElementById("ability")
 
 const BASE_URL = `https://pokeapi.co/api/v2/pokemon/`
 let word = "charmander"
@@ -86,6 +87,9 @@ const fetchCharmanderDataAsync = async () => {
     //Display multiple types/names: 
     const typeNames = data.types.map(typeObj => typeObj.type.name);  // Map the whole array
     types.innerHTML = typeNames.join(", ")
+    
+    ability.innerHTML = data.abilities[0].ability.name
+    console.log(data)
 
   } catch (error) {
     //Handle any errors 
@@ -93,6 +97,15 @@ const fetchCharmanderDataAsync = async () => {
   }
 }
 fetchCharmanderDataAsync()
+
+const fetchData = async () => {
+  const response = await fetch(URL);
+  const data = await response.json();
+
+  // Logga hela data-objektet
+  console.log(data);
+}
+fetchData()
 
 // 5) After familiarizing with the data, we will use the data
 //    to change our table. We will give you the image as a start.
@@ -119,3 +132,4 @@ fetchCharmanderDataAsync()
 // ***BONUS***
 // Check out the API's documentation and try to fetch from another
 // endpoint! There are many - as you can see in the first link
+// Answer: Want to add "Ability"

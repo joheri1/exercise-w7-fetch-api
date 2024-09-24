@@ -70,13 +70,22 @@ const fetchCharmanderDataAsync = async () => {
 
     //Convert the response to JSON 
     const data = await response.json()
-    
-    //Log Charmander data
 
+    //Log Charmander data
     console.log(data.name)
 
     //Add image id.source = endpoint 
     image.src = data.sprites.front_default
+
+    name.innerHTML = data.name
+    weight.innerHTML = data.weight
+    height.innerHTML = data.height
+    //Display only the first name in the array
+    types.innerHTML = data.types[0].type.name
+
+    //Display multiple types/names: 
+    const typeNames = data.types.map(typeObj => typeObj.type.name);  // Map the whole array
+    types.innerHTML = typeNames.join(", ")
 
   } catch (error) {
     //Handle any errors 
@@ -99,6 +108,13 @@ fetchCharmanderDataAsync()
 //    you've found the correct path in the json.
 //    HINT --> Log stuff in the console to try things out
 //    HINT --> If it's an array - map over the array
+//    Answer: 
+//    Display only the first name in the array
+//    types.innerHTML = data.types[0].type.name
+//    Display multiple types/names:
+//    const typeNames = data.types.map(typeObj => typeObj.type.name);  
+//    Map the whole array
+//    types.innerHTML = typeNames.join(", ")
 
 // ***BONUS***
 // Check out the API's documentation and try to fetch from another

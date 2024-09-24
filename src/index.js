@@ -21,13 +21,12 @@ const types = document.getElementById("types");
 
 const fetchPokemons = () => {
    /*Fetch all pokemons here*/
-  fetch('https://pokeapi.co/api/v2/pokemon/')
+  fetch('https://pokeapi.co/api/v2/pokemon/?limit=10')
     .then((response) => {
       return response.json()
     })
     .then((data) => {
       data.results.forEach((pokemon) => console.log(pokemon.name))
-      //console.log(data.results.name) array1.forEach((element) => console.log(element))
     })
 }
 fetchPokemons()
@@ -42,7 +41,7 @@ fetchPokemons()
 //    Answer: console.log(data.results[0].name) 
 
 //    c) Log the names of all pokemons in the array
-//    Answer: console.log(data.results.name)
+//    Answer: data.results.forEach((pokemon) => console.log(pokemon.name))
 
 // 3) You might know that there are more than 20 pokemons
 //    in the pokedex. Add a query parameter

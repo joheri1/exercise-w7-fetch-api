@@ -14,6 +14,10 @@ const weight = document.getElementById("weight");
 const height = document.getElementById("height");
 const types = document.getElementById("types");
 
+const BASE_URL = `https://pokeapi.co/api/v2/pokemon/`
+let word = "charmander"
+const URL = `${BASE_URL}/${word}`
+
 // 1) Start with updating the fetchPokemons function so that
 //    it's fetching the pokemons from the pokemon endpoint and
 //    logs the results in the console.
@@ -49,16 +53,32 @@ fetchPokemons()
 //    choice, like this: https://pokeapi.co/api/v2/pokemon/?limit=151
 //    and pick a pokemon that you would like to continue
 //    working with. Copy the pokemon's URL.
+//    Answer: Limit, fetch('https://pokeapi.co/api/v2/pokemon/?limit=10'). I pick Charmander
 
 // 4) Now that we've picked a pokemon, we will do a new fetch
 //    to the URL we copied. Since that's another endpoint,
 //    we will create a new fetch inside the fetchBulbasaurData
 //    function (change the function's name to fit your pokemon).
 //    Log the data in the console and see what you find.
+//    Answer: A lot of data... so I changed to console.log(data.name)
+//            to see only Charmander's name. 
 
-const fetchBulbasaurData = () => {
-  /*Fetch singular pokemon here*/
-};
+const fetchCharmanderDataAsync = async () => {
+  /*Fetch Charmander here*/
+  try {
+    const response = await fetch(URL)
+
+    //Convert the response to JSON 
+    const data = await response.json()
+    
+    //Log Charmander data
+    console.log(data.name)
+  } catch (error) {
+    //Handle any errors 
+    console.error("Error when fetching Charmander")
+  }
+}
+fetchCharmanderDataAsync()
 
 // 5) After familiarizing with the data, we will use the data
 //    to change our table. We will give you the image as a start.

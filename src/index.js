@@ -72,10 +72,15 @@ const fetchCharmanderDataAsync = async () => {
     const data = await response.json()
     
     //Log Charmander data
+
     console.log(data.name)
+
+    //Add image id.source = endpoint 
+    image.src = data.sprites.front_default
+
   } catch (error) {
     //Handle any errors 
-    console.error("Error when fetching Charmander")
+    console.error("Error when fetching Charmander", error)
   }
 }
 fetchCharmanderDataAsync()
@@ -87,6 +92,8 @@ fetchCharmanderDataAsync()
 //    image.src = json.sprites.front_default;
 //    Copy that line into the fetchBulbasaurData and hopefully
 //    the image in the HTML updates.
+//    Answer: //Add image id.source = endpoint 
+//            image.src = data.sprites.front_default
 
 // 6) Update the innerHTML of the other rows as well after
 //    you've found the correct path in the json.

@@ -20,8 +20,16 @@ const types = document.getElementById("types");
 //    HINT --> Don't forget to invoke the function
 
 const fetchPokemons = () => {
-  /*Fetch all pokemons here*/
-};
+   /*Fetch all pokemons here*/
+  fetch('https://pokeapi.co/api/v2/pokemon/')
+    .then((response) => {
+      return response.json()
+    })
+      .then((data) => {
+        console.log(data)
+    })
+}
+fetchPokemons()
 
 // 2) a) As you can see, we get some metadata as well as
 //    the results of the fetch. Change the console.log so

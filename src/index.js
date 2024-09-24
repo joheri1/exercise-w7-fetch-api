@@ -26,7 +26,7 @@ const fetchPokemons = () => {
       return response.json()
     })
       .then((data) => {
-        console.log(data)
+        console.log(data.results)
     })
 }
 fetchPokemons()
@@ -34,11 +34,14 @@ fetchPokemons()
 // 2) a) As you can see, we get some metadata as well as
 //    the results of the fetch. Change the console.log so
 //    that you only log the array of pokemon objects.
+//    Answer: console.log(data.results)
 
 //    b) Log only the name of the first pokemon in the
 //    pokemon objects array
+//    Answer: console.log(data.results[0].name) 
 
 //    c) Log the names of all pokemons in the array
+//    Answer: console.log(data.results.name)
 
 // 3) You might know that there are more than 20 pokemons
 //    in the pokedex. Add a query parameter

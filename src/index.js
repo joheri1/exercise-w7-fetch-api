@@ -15,9 +15,10 @@ const height = document.getElementById("height")
 const types = document.getElementById("types")
 const ability = document.getElementById("ability")
 
-const BASE_URL = `https://pokeapi.co/api/v2/pokemon/`
+const BASE_URL = `https://pokeapi.co/api/v2`
+let pokemon = "pokemon"
+const URL = `${BASE_URL}/${pokemon}`
 let word = "charmander"
-const URL = `${BASE_URL}/${word}`
 
 // 1) Start with updating the fetchPokemons function so that
 //    it's fetching the pokemons from the pokemon endpoint and
@@ -26,7 +27,7 @@ const URL = `${BASE_URL}/${word}`
 
 const fetchPokemons = () => {
    /*Fetch all pokemons here*/
-  fetch('https://pokeapi.co/api/v2/pokemon/?limit=10')
+  fetch(`${URL}/?limit=10`)
     .then((response) => {
       return response.json()
     })
@@ -67,7 +68,7 @@ fetchPokemons()
 const fetchCharmanderDataAsync = async () => {
   /*Fetch Charmander here*/
   try {
-    const response = await fetch(URL)
+    const response = await fetch(`${BASE_URL}/${pokemon}/${word}`)
 
     //Convert the response to JSON 
     const data = await response.json()
